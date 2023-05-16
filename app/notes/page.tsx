@@ -1,10 +1,13 @@
+import Link from "next/link";
+import CreateNote from "./[id]/CreateNote";
+
 async function getNotes() {
   const res = await fetch(
     "http://127.0.0.1:8090/api/collections/notes/records",
     { cache: "no-store" }
   );
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   return data.items;
   // return data?.items as any[];
 }
@@ -19,18 +22,27 @@ export default async function NotesPage({
     <div>
       <h1 className="mb-6 text-3xl font-light">Notes</h1>
 
-      <div>
+      <section className="flex gap-6">
         {notes.map((note: any) => {
           return (
-            <Note key={note.title} title={note.title} content={note.content} />
+            <Link href={`/notes/${note.id}`}>
+              <Note
+                key={note.title}
+                id={note.id}
+                title={note.title}
+                content={note.content}
+              />
+            </Link>
           );
         })}
-      </div>
+
+        <CreateNote />
+      </section>
     </div>
   );
 }
 
-function Note({ title, content }: { title: any; content: any }) {
+export function Note({ title, content }: any) {
   return (
     <div className="w-48 p-2 border rounded border-slate-500">
       <h3 className="font-bold">{title}</h3>
