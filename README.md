@@ -1,6 +1,6 @@
 # Pocketbase Notes
 
-> Next.js app using Next13 features and pocketbase db
+> Next.js app using Next.js 13 features and PocketBase as the db
 
 ## Setup
 
@@ -17,8 +17,9 @@
 - **Delete:** _Not implemented yet_ - Delete a note
 - **Update:** _Not implemented yet_ - Edit a note
 
-## Next13 functionality
+## Next.js 13 functionality
 
 - Dynamic routing
 - Server and client components
-- App directory
+- App router
+- Loading pages
